@@ -29,9 +29,9 @@ class MyApp extends StatelessWidget {
               bodyText1: TextStyle(color: Color.fromRGBO(20, 51, 51, 1)),
               bodyText2: TextStyle(color: Color.fromRGBO(20, 51, 51, 1)),
               headline6: TextStyle(
-                fontSize: 20,
-                fontFamily: 'RobotoCondensed',
-              ))
+                  fontSize: 20,
+                  fontFamily: 'RobotoCondensed',
+                  fontWeight: FontWeight.bold))
           // This makes the visual density adapt to the platform that you run
           // the app on. For desktop platforms, the controls will be smaller and
           // closer together (more dense) than on mobile platforms.
