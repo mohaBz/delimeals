@@ -21,10 +21,21 @@ class MyApp extends StatelessWidget {
           // or simply save your changes to "hot reload" in a Flutter IDE).
           // Notice that the counter didn't reset back to zero; the application
           // is not restarted.
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.pink,
+          accentColor: Colors.amber,
+          fontFamily: 'Raleway',
+          canvasColor: Color.fromRGBO(255, 254, 229, 1),
+          textTheme: ThemeData.light().textTheme.copyWith(
+              bodyText1: TextStyle(color: Color.fromRGBO(20, 51, 51, 1)),
+              bodyText2: TextStyle(color: Color.fromRGBO(20, 51, 51, 1)),
+              headline6: TextStyle(
+                fontSize: 20,
+                fontFamily: 'RobotoCondensed',
+              ))
           // This makes the visual density adapt to the platform that you run
           // the app on. For desktop platforms, the controls will be smaller and
           // closer together (more dense) than on mobile platforms.
+          ,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: CategoriesScreen());
