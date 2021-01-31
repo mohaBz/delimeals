@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 
-class CategoryMealsSCreen extends StatelessWidget {
+class CategoryMealsScreen extends StatelessWidget {
+  final String id;
+  final String title;
+
+  CategoryMealsScreen(this.id, this.title);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Receipes"),
+        title: Text(title),
       ),
       body: Center(
         child: Text("second Screen"),
