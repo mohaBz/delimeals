@@ -1,3 +1,5 @@
+import 'package:delimeals/data/dummy_data.dart';
+import 'package:delimeals/widgets/meal_item.dart';
 import 'package:flutter/material.dart';
 
 class CategoryMealsScreen extends StatelessWidget {
@@ -8,12 +10,21 @@ class CategoryMealsScreen extends StatelessWidget {
         ModalRoute.of(context).settings.arguments as Map<String, String>;
     final catTitle = routeArgs['title'];
     final catId = routeArgs['id'];
+    final categoryMeals = DUMMY_MEALS.where((element) {
+      return element.categories.contains(catId);
+    }).toList();
+
     return Scaffold(
       appBar: AppBar(
         title: Text(catTitle),
       ),
-      body: Center(
-        child: Text("second Screen"),
+      body: ListView.builder(
+        itemBuilder: (ctx, index) {
+          return MealItem(
+            meal: categoryMeals[index],
+          );
+        },
+        itemCount: categoryMeals.length,
       ),
     );
   }
