@@ -1,9 +1,9 @@
 import 'package:delimeals/models/meal.dart';
+import 'package:delimeals/screens/meal_detail_screen.dart';
 import 'package:flutter/material.dart';
 
 class MealItem extends StatelessWidget {
   final Meal meal;
-
   const MealItem({Key key, this.meal}) : super(key: key);
   String get complexity {
     switch (meal.complexity) {
@@ -33,10 +33,15 @@ class MealItem extends StatelessWidget {
     }
   }
 
+  void selectedMeal(BuildContext context) {
+    Navigator.of(context)
+        .pushNamed(MealDetailScreen.routeName, arguments: meal.id);
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () => selectedMeal(context),
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
