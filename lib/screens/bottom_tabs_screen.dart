@@ -1,5 +1,6 @@
 import 'package:delimeals/screens/categories_screen.dart';
 import 'package:delimeals/screens/favorites_screen.dart';
+import 'package:delimeals/widgets/main_drawer.dart';
 import 'package:flutter/material.dart';
 
 class BottomTabsScreen extends StatefulWidget {
@@ -19,6 +20,9 @@ class _BottomTabsScreenState extends State<BottomTabsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: MainDrawer(),
+      ),
       appBar: AppBar(
         title: Text("Meals"),
       ),

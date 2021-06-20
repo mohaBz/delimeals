@@ -1,6 +1,7 @@
 import 'package:delimeals/screens/bottom_tabs_screen.dart';
 import 'package:delimeals/screens/categories_screen.dart';
 import 'package:delimeals/screens/category_meals_screen.dart';
+import 'package:delimeals/screens/filter_screen.dart';
 import 'package:delimeals/screens/meal_detail_screen.dart';
 import 'package:delimeals/screens/tabs_screen.dart';
 import 'package:flutter/material.dart';
@@ -42,10 +43,11 @@ class MyApp extends StatelessWidget {
         ,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: BottomTabsScreen(),
       routes: {
+        '/': (ctx) => BottomTabsScreen(),
         CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(),
         MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
+        FilterScreen.routeName: (ctx) => FilterScreen(),
       },
       onGenerateRoute: (settings) {
         print(settings.arguments);
