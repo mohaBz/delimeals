@@ -1,20 +1,29 @@
+import 'package:delimeals/models/meal.dart';
 import 'package:delimeals/screens/categories_screen.dart';
 import 'package:delimeals/screens/favorites_screen.dart';
 import 'package:delimeals/widgets/main_drawer.dart';
 import 'package:flutter/material.dart';
 
 class BottomTabsScreen extends StatefulWidget {
+  List<Meal> favmeals;
+  BottomTabsScreen(this.favmeals);
   @override
   _BottomTabsScreenState createState() => _BottomTabsScreenState();
 }
 
 class _BottomTabsScreenState extends State<BottomTabsScreen> {
   int _selectedIndex = 0;
-  var screens = [CategoriesScreen(), FavoritesScreen()];
+  var screens;
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  @override
+  void initState() {
+    screens = [CategoriesScreen(), FavoritesScreen(widget.favmeals)];
+    super.initState();
   }
 
   @override

@@ -20,7 +20,9 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   List<Meal> _slectedMeals = DUMMY_MEALS;
+  List<Meal> _favoriteMeals = [];
   Map<String, bool> filters;
+
   @override
   void initState() {
     filters = {
@@ -31,6 +33,25 @@ class _MyAppState extends State<MyApp> {
     };
     // TODO: implement initState
     super.initState();
+  }
+
+  void toggleFavMeal(String mealId) {
+    int existingIndex =
+        _favoriteMeals.indexWhere((element) => element.id == mealId);
+    if (existingIndex >= 0) {
+      setState(() {
+        _favoriteMeals.removeAt(existingIndex);
+      });
+    } else {
+      setState(() {
+        _favoriteMeals
+            .add(DUMMY_MEALS.firstWhere((element) => element.id == mealId));
+      });
+    }
+  }
+
+  bool isFavoriteMeal(String mealId) {
+    return _favoriteMeals.any((element) => element.id == mealId);
   }
 
   void setFilters(Map<String, bool> filterList) {
@@ -73,10 +94,11 @@ class _MyAppState extends State<MyApp> {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       routes: {
-        '/': (ctx) => BottomTabsScreen(),
+        '/': (ctx) => BottomTabsScreen(_favoriteMeals),
         CategoryMealsScreen.routeName: (ctx) =>
             CategoryMealsScreen(_slectedMeals),
-        MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
+        MealDetailScreen.routeName: (ctx) =>
+            MealDetailScreen(isFavoriteMeal, toggleFavMeal),
         FilterScreen.routeName: (ctx) => FilterScreen(filters, setFilters),
       },
       onGenerateRoute: (settings) {

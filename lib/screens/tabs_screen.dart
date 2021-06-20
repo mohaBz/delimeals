@@ -30,7 +30,7 @@ class _TabsScreenState extends State<TabsScreen> {
             ),
           ]),
         ),
-        body: TabBarView(children: [CategoriesScreen(), FavoritesScreen()]),
+        // body: TabBarView(children: [CategoriesScreen(), FavoritesScreen()]),
       ),
     );
   }
