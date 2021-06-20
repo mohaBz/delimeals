@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 
 class MealItem extends StatelessWidget {
   final Meal meal;
-  const MealItem({Key key, this.meal}) : super(key: key);
+  final Function removeItem;
+
+  const MealItem({Key key, this.meal, this.removeItem}) : super(key: key);
   String get complexity {
     switch (meal.complexity) {
       case Complexity.Simple:
@@ -35,7 +37,12 @@ class MealItem extends StatelessWidget {
 
   void selectedMeal(BuildContext context) {
     Navigator.of(context)
-        .pushNamed(MealDetailScreen.routeName, arguments: meal.id);
+        .pushNamed(MealDetailScreen.routeName, arguments: meal.id)
+        .then((value) {
+      if (value != null) {
+        removeItem(value);
+      }
+    });
   }
 
   @override
