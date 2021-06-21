@@ -74,6 +74,7 @@ Widget buildContainerList(Widget child) {
     ),
     height: 150,
     width: 300,
+    margin: EdgeInsets.symmetric(vertical: 10),
   );
 }
 
